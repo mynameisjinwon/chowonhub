@@ -1,11 +1,13 @@
 package com.chowon.chownhub.member;
 
+import org.springframework.stereotype.Repository;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 
+@Repository
 public class MemoryMemberRepository implements MemberRepository{
     private static final Map<String, Member> members = new HashMap<>();
 

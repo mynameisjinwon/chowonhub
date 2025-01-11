@@ -3,18 +3,28 @@ package com.chowon.chownhub.board;
 public class Board {
     private long boardId;
     private String date;
+    private String subject;
     private String memberId;
     private String title;
     private String content;
     private String like;
 
-    public Board(long boardId, String date, String memberId, String title, String content, String like) {
+    public Board(long boardId, String date, String subject, String memberId, String title, String content, String like) {
         this.boardId = boardId;
         this.date = date;
+        this.subject = subject;
         this.memberId = memberId;
         this.title = title;
         this.content = content;
         this.like = like;
+    }
+
+    public String getSubject() {
+        return subject;
+    }
+
+    public void setSubject(String subject) {
+        this.subject = subject;
     }
 
     public String getDate() {

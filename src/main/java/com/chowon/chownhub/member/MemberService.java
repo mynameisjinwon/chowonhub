@@ -4,9 +4,13 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class MemberService {
-    private static Logger log = LoggerFactory.getLogger(MemberService.class);
+    private static final Logger log = LoggerFactory.getLogger(MemberService.class);
 
-    private MemberRepository memberRepository;
+    private final MemberRepository memberRepository;
+
+    public MemberService(MemberRepository memberRepository) {
+        this.memberRepository = memberRepository;
+    }
 
     public void join(Member member) {
         Member dbMember = memberRepository.findById(member.getMemberId());

@@ -6,7 +6,11 @@ import org.slf4j.LoggerFactory;
 public class BoardService {
     private static Logger log = LoggerFactory.getLogger(BoardService.class);
 
-    private BoardRepository boardRepository;
+    private final BoardRepository boardRepository;
+
+    public BoardService(BoardRepository boardRepository) {
+        this.boardRepository = boardRepository;
+    }
 
     // 글 작성
     public void createBoard(Board board) {

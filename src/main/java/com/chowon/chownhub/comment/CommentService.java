@@ -6,7 +6,11 @@ import org.slf4j.LoggerFactory;
 public class CommentService {
     private static final Logger log = LoggerFactory.getLogger(CommentService.class);
 
-    private CommentRepository commentRepository;
+    private final CommentRepository commentRepository;
+
+    public CommentService(CommentRepository commentRepository) {
+        this.commentRepository = commentRepository;
+    }
 
     public void createComment(Comment comment) {
         commentRepository.create(comment);
