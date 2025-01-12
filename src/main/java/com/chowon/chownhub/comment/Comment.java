@@ -54,4 +54,15 @@ public class Comment {
     public void setContent(String content) {
         this.content = content;
     }
+
+    @Override
+    public String toString() {
+        return "Comment{" +
+                "commentId=" + commentId +
+                ", boardId=" + boardId +
+                ", memberId='" + memberId + '\'' +
+                ", date='" + date + '\'' +
+                ", content='" + content + '\'' +
+                '}';
+    }
 }

@@ -82,4 +82,17 @@ public class Board {
     public void setLike(String like) {
         this.like = like;
     }
+
+    @Override
+    public String toString() {
+        return "Board{" +
+                "boardId=" + boardId +
+                ", date='" + date + '\'' +
+                ", subject='" + subject + '\'' +
+                ", memberId='" + memberId + '\'' +
+                ", title='" + title + '\'' +
+                ", content='" + content + '\'' +
+                ", like='" + like + '\'' +
+                '}';
+    }
 }
