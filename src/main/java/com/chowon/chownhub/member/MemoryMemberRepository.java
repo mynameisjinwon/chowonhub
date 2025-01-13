@@ -41,6 +41,9 @@ public class MemoryMemberRepository implements MemberRepository{
                 break;
             }
         }
+        if (missingId == null) {
+            throw new IllegalStateException("등록되지 않은 이메일입니다.");
+        }
         return missingId;
     }
 
@@ -54,11 +57,19 @@ public class MemoryMemberRepository implements MemberRepository{
                 break;
             }
         }
+        if (missingPw == null) {
+            throw new IllegalStateException("등록되지 않은 이메일입니다.");
+        }
+
         return missingPw;
     }
 
     @Override
     public List<Member> findAll() {
         return new ArrayList<>(members.values());
+    }
+
+    public void clear() {
+        members.clear();
     }
 }

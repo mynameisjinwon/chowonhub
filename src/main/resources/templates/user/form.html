@@ -1,4 +1,4 @@
-<html lang="kr">
+<html lang="kr" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8"></meta>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -31,8 +31,11 @@
             </ul>
             <span class="navbar-text">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item">
+                        <li th:unless="${member}" class="nav-item">
                             <a class="nav-link active" aria-current="page" href="/user/login">로그인</a>
+                        </li>
+                        <li th:if="${member}" class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="/user/logout">로그아웃</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="/user/join">회원가입</a>
@@ -47,24 +50,24 @@
 <form method="post" action="/user/join">
     <div class="w-50 p-3 mx-auto ">
         <div class="mb-3">
-            <label for="userId" class="form-label">아이디</label>
-            <input type="text" class="form-control" id="userId" aria-describedby="emailHelp" name="userId">
+            <label for="memberId" class="form-label">아이디</label>
+            <input type="text" class="form-control" id="memberId" aria-describedby="emailHelp" name="memberId">
         </div>
         <div class="mb-3">
             <label for="password" class="form-label">비밀번호</label>
-            <input type="text" class="form-control" id="password" aria-describedby="emailHelp" name="password">
+            <input type="password" class="form-control" id="password" aria-describedby="emailHelp" name="password">
         </div>
         <div class="mb-3">
             <label for="password_check" class="form-label">비밀번호 확인</label>
-            <input type="text" class="form-control" id="password_check" aria-describedby="emailHelp" name="password_check">
+            <input type="password" class="form-control" id="password_check" aria-describedby="emailHelp" name="password_check">
         </div>
         <div class="mb-3">
             <label for="name" class="form-label">이름</label>
-            <input type="password" class="form-control" id="name" name="name">
+            <input type="text" class="form-control" id="name" name="name">
         </div>
         <div class="mb-3">
             <label for="email" class="form-label">이메일</label>
-            <input type="password" class="form-control" id="email" name="email">
+            <input type="email" class="form-control" id="email" name="email">
         </div>
         <div class="mb-3 form-check">
             <input type="checkbox" class="form-check-input" id="exampleCheck1">
