@@ -1,7 +1,10 @@
 package com.chowon.chownhub.controller;
 
 import com.chowon.chownhub.member.Member;
+import com.chowon.chownhub.member.MemberRepository;
 import com.chowon.chownhub.member.MemberService;
+import com.chowon.chownhub.member.MemoryMemberRepository;
+import com.chowon.chownhub.session.SessionManager;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import org.slf4j.Logger;
@@ -38,8 +41,11 @@ public class UserController {
             return "redirect:/user/login";
         }
         HttpSession session = request.getSession();
-        session.setAttribute("loginMember", member);
-        model.addAttribute(member);
+        MemberRepository repo = new MemoryMemberRepository();
+
+        Member loginMember = repo.findById(member.getMemberId());
+        session.setAttribute("loginMember", loginMember);
+        model.addAttribute(loginMember);
         log.debug("로그인 성공 : {}", member.getMemberId());
         return "redirect:/";
     }
@@ -60,10 +66,37 @@ public class UserController {
         return "/user/form.html";
     }
 
+    // 회원가입 기능 구현
     @PostMapping("/user/join")
     public String createUser(Member member) {
         log.debug("new member : {}", member);
         service.join(member);
+        return "redirect:/";
+    }
+
+    // 회원 정보 페이지
+    @GetMapping("/user/info")
+    public String userInfo(HttpServletRequest request, Model model) {
+        SessionManager manager = new SessionManager(request, model);
+        manager.loginCheck();
+        return "/user/info.html";
+    }
+
+    // 회원 정보 수정 구현
+    @PostMapping("/user/info")
+    public String updateUserInfo(Member updateMember, HttpServletRequest request, Model model) {
+        log.debug("Update member : {}", updateMember);
+        MemberRepository repo = new MemoryMemberRepository();
+        Member dbMember = repo.findById(updateMember.getMemberId());
+        dbMember.setEmail(updateMember.getEmail());
+        dbMember.setName(updateMember.getName());
+        dbMember.setPassword(updateMember.getPassword());
+
+        repo.update(dbMember);
+        HttpSession session = request.getSession();
+        session.setAttribute("loginMember", updateMember);
+        model.addAttribute("member", updateMember);
+
         return "redirect:/";
     }
 }
