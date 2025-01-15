@@ -7,7 +7,7 @@ public interface BoardRepository {
 
     Board findById(long boardId);
 
-    List<Board> findBySubject(String subject);
+    List<Board> findBySubject(BoardSubject subject);
 
     List<Board> findAll();
 

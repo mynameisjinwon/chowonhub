@@ -3,13 +3,13 @@ package com.chowon.chownhub.board;
 public class Board {
     private long boardId;
     private String date;
-    private String subject;
+    private BoardSubject subject;
     private String memberId;
     private String title;
     private String content;
-    private String like;
+    private long like;
 
-    public Board(long boardId, String date, String subject, String memberId, String title, String content, String like) {
+    public Board(long boardId, String date, BoardSubject subject, String memberId, String title, String content, long like) {
         this.boardId = boardId;
         this.date = date;
         this.subject = subject;
@@ -19,11 +19,11 @@ public class Board {
         this.like = like;
     }
 
-    public String getSubject() {
+    public BoardSubject getSubject() {
         return subject;
     }
 
-    public void setSubject(String subject) {
+    public void setSubject(BoardSubject subject) {
         this.subject = subject;
     }
 
@@ -33,14 +33,6 @@ public class Board {
 
     public void setDate(String date) {
         this.date = date;
-    }
-
-    public Board(long boardId, String memberId, String title, String content, String like) {
-        this.boardId = boardId;
-        this.memberId = memberId;
-        this.title = title;
-        this.content = content;
-        this.like = like;
     }
 
     public long getBoardId() {
@@ -75,11 +67,11 @@ public class Board {
         this.content = content;
     }
 
-    public String getLike() {
+    public long getLike() {
         return like;
     }
 
-    public void setLike(String like) {
+    public void setLike(long like) {
         this.like = like;
     }
 

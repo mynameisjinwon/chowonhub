@@ -3,6 +3,8 @@ package com.chowon.chownhub.board;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.List;
+
 public class BoardService {
     private static Logger log = LoggerFactory.getLogger(BoardService.class);
 
@@ -30,5 +32,10 @@ public class BoardService {
     // 좋아요
     public void likeBoard(long boardId) {
         boardRepository.like(boardId);
+    }
+
+    // 주제별로 글 불러오기
+    public List<Board> getBoardsBySubject(BoardSubject subject) {
+        return boardRepository.findBySubject(subject);
     }
 }

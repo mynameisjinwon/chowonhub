@@ -11,9 +11,11 @@ import java.util.Map;
 public class MemoryBoardRepository implements BoardRepository {
 
     private static final Map<Long, Board> boards = new HashMap<>();
+    private static long boardId = 0;
 
     @Override
     public void create(Board board) {
+        board.setBoardId(boardId++);
         boards.put(board.getBoardId(), board);
     }
 
@@ -23,11 +25,11 @@ public class MemoryBoardRepository implements BoardRepository {
     }
 
     @Override
-    public List<Board> findBySubject(String subject) {
+    public List<Board> findBySubject(BoardSubject subject) {
         List<Board> all = findAll();
         List<Board> tmp = new ArrayList<>();
         for (Board board : all) {
-            if (board.getSubject().equals(subject)) {
+            if (board.getSubject() == subject) {
                 tmp.add(board);
             }
         }
@@ -54,5 +56,9 @@ public class MemoryBoardRepository implements BoardRepository {
         Board board = boards.get(boardId);
         board.setLike(board.getLike() + 1);
         boards.put(boardId, board);
+    }
+
+    public void clear() {
+        boards.clear();
     }
 }
