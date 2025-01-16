@@ -2,9 +2,11 @@ package com.chowon.chownhub.board;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class BoardService {
     private static Logger log = LoggerFactory.getLogger(BoardService.class);
 

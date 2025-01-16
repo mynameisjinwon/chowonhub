@@ -19,7 +19,7 @@ public class BoardServiceTest {
     }
     @Test
     public void 글쓰기테스트() {
-        Board board = new Board(1, "20250115", BoardSubject.NOTICE, "jinwon", "hello world", "hello world", 1);
+        Board board = new Board(1L, "20250115", BoardSubject.NOTICE, "jinwon", "hello world", "hello world", 1L);
         service.createBoard(board);
 
         Board dbBoard = repo.findById(board.getBoardId());
@@ -29,7 +29,7 @@ public class BoardServiceTest {
 
     @Test
     public void 글수정테스트() {
-        Board board = new Board(1, "20250115", BoardSubject.NOTICE, "jinwon", "hello world", "hello world", 1);
+        Board board = new Board(1L, "20250115", BoardSubject.NOTICE, "jinwon", "hello world", "hello world", 1L);
         service.createBoard(board);
 
         Board dbBoard = repo.findById(board.getBoardId());
@@ -42,7 +42,7 @@ public class BoardServiceTest {
 
     @Test
     public void 좋아요테스트() {
-        Board board = new Board(1, "20250115", BoardSubject.NOTICE, "jinwon", "hello world", "hello world", 0);
+        Board board = new Board(1L, "20250115", BoardSubject.NOTICE, "jinwon", "hello world", "hello world", 0L);
         service.createBoard(board);
 
         service.likeBoard(board.getBoardId());
@@ -55,11 +55,11 @@ public class BoardServiceTest {
 
     @Test
     public void 주제별글목록가져오기() {
-        Board board1 = new Board(1, "20250115", BoardSubject.NOTICE, "jinwon", "hello world", "hello world", 0);
-        Board board2 = new Board(2, "20250115", BoardSubject.NOTICE, "jinwon", "hello world", "hello world", 0);
-        Board board3 = new Board(3, "20250115", BoardSubject.SPECS, "jinwon", "hello world", "hello world", 0);
-        Board board4 = new Board(4, "20250115", BoardSubject.SPECS, "jinwon", "hello world", "hello world", 0);
-        Board board5 = new Board(5, "20250115", BoardSubject.HEART, "jinwon", "hello world", "hello world", 0);
+        Board board1 = new Board(1L, "20250115", BoardSubject.NOTICE, "jinwon", "hello world", "hello world", 0L);
+        Board board2 = new Board(2L, "20250115", BoardSubject.NOTICE, "jinwon", "hello world", "hello world", 0L);
+        Board board3 = new Board(3L, "20250115", BoardSubject.SPECS, "jinwon", "hello world", "hello world", 0L);
+        Board board4 = new Board(4L, "20250115", BoardSubject.SPECS, "jinwon", "hello world", "hello world", 0L);
+        Board board5 = new Board(5L, "20250115", BoardSubject.HEART, "jinwon", "hello world", "hello world", 0L);
 
         service.createBoard(board1);
         service.createBoard(board2);

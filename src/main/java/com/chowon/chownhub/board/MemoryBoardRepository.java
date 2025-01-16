@@ -2,6 +2,8 @@ package com.chowon.chownhub.board;
 
 import org.springframework.stereotype.Repository;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -16,6 +18,8 @@ public class MemoryBoardRepository implements BoardRepository {
     @Override
     public void create(Board board) {
         board.setBoardId(boardId++);
+        board.setLike(0L);
+        board.setDate(getDateString());
         boards.put(board.getBoardId(), board);
     }
 
@@ -60,5 +64,14 @@ public class MemoryBoardRepository implements BoardRepository {
 
     public void clear() {
         boards.clear();
+    }
+
+    private String getDateString() {
+        // 현재 날짜 구하기
+        LocalDate now = LocalDate.now();
+        // 포맷 정의
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+        // 포맷 적용
+        return now.format(formatter);
     }
 }

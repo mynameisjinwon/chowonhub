@@ -50,8 +50,10 @@
 </nav>
 
 <h1>거래처 스펙</h1>
-<input type="hidden" name="subject" value="specs">
-<button type="button" class="btn btn-primary" onclick="location.href='/board/create'">글쓰기</button>
+<form action="/board/create">
+    <input type="hidden" name="subject" value="specs">
+    <button type="submit" class="btn btn-primary">글쓰기</button>
+</form>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>

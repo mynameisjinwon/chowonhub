@@ -49,8 +49,17 @@
 </nav>
 
 <h1>글쓰기</h1>
-[[${subject}]]
-<form method="post" action="/board/create">
+subject = [[${subject}]]
+<form method="post" action="/board/create" >
+
+    <tr th:each="boardSubject : ${boardSubjects}">
+        <th th:text="${boardSubject.getSubjectName()}" ></th>
+    </tr>
+
+    <div th:each="boardSubject : ${boardSubjects}">
+        <input type="text" th:value="${boardSubject}" th:if="${boardSubject.getSubjectName eq subject}" name="subject" ></input>
+    </div>
+
     <input type="hidden" th:value="${member.memberId}" name="memberId">
 
     <div class="w-50 p-3 mx-auto ">

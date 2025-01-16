@@ -1,15 +1,15 @@
 package com.chowon.chownhub.board;
 
 public class Board {
-    private long boardId;
+    private Long boardId;
     private String date;
     private BoardSubject subject;
     private String memberId;
     private String title;
     private String content;
-    private long like;
+    private Long like;
 
-    public Board(long boardId, String date, BoardSubject subject, String memberId, String title, String content, long like) {
+    public Board(Long boardId, String date, BoardSubject subject, String memberId, String title, String content, Long like) {
         this.boardId = boardId;
         this.date = date;
         this.subject = subject;
